@@ -46,3 +46,17 @@ footer {
     margin: 4px 2px;
     cursor: pointer;
 }
+@media only screen and (max-width: 900px){
+    .header {
+      height: 60px;
+      background: #284b63;
+      padding: 0px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+      overflow: hidden;
+      display: flex;
+      column-gap: 0px;
+      padding: 15px 16px 15px 16px;
+    }  
+  }
