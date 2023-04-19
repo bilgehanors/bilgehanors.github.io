@@ -1,0 +1,48 @@
+html {
+    background-image: url(./public/Assets/Paris.png);
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    
+}
+.headerout {
+    background-color: #284b63;
+    border: 1px solid black;
+    text-align: center;
+}
+.header {
+    height: 60px;
+    background: #284b63;
+    padding: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    overflow: hidden;
+    display: flex;
+    column-gap: 100px;
+    padding: 15px 16px 15px 16px;
+}
+h1 {
+    font-size: 3.2rem;
+    color: #000000;
+}
+footer {
+    margin-top: 5%;
+    color: black;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.5rem;
+    margin-bottom: 0px;
+    margin-top: 570px;
+}
+.btn {
+    background-color: #284b63;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.2rem;
+    margin: 4px 2px;
+    cursor: pointer;
+}

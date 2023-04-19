@@ -1,0 +1,133 @@
+h3 {
+    position: absolute;
+    display: block;
+    align-self: center;
+    top: 1200px;
+    color: whitesmoke;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 30px;
+    background-color: #B1ADA7;
+  }
+@media screen and (min-width:600px){
+    
+    .bar {
+        height: 75px;
+        background-color:#B1ADA7;
+        max-width: 100%;
+        border: 2px solid black;
+    }
+}
+.bar {
+    opacity: 0.7;
+}
+html {
+    background-image: url("./Assets/Elma\ Paris.png");
+    scroll-behavior: smooth;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100%;
+    max-width: 100%;
+    background-size: cover;
+}
+.col1 {
+    width: 33%;
+}
+.col2 {
+    width: 33%;
+}
+.col3 {
+    width: 33%;
+}
+.main{
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+}
+h1 {
+    color: whitesmoke;
+}
+.slider .slide {
+    position: absolute;
+    width: 1430px;
+    height: 750px;
+    border: 2px solid whitesmoke;
+    background-size: cover;
+    border-bottom: 2px solid whitesmoke;
+    animation: slider 37.5s infinite;
+   }
+    
+.slider .slide:nth-child(1) {
+      background-image: url("./Assets/Italy.png");
+      animation-delay: 0s;
+   }
+   
+.slider .slide:nth-child(2) {
+      background-image: url("./Assets/kizgin.jpg");
+      animation-delay: -7.5s;
+   }
+   
+.slider .slide:nth-child(3) {
+      background-image: url("./Assets/Tablo.png");
+      animation-delay: -15s;
+    }
+.slider .slide:nth-child(4) {
+      background-image: url("./Assets/Komik.jpg");
+      animation-delay: -22.5s;
+}
+.slider .slide:nth-child(5) {
+    background-image: url("./Assets/Esniyor.jpg");
+    animation-delay: -30s;
+  }
+
+@keyframes slider {
+    0%, 16%, 100% {
+      transform: translateX(0);
+      animation-timing-function: ease;
+    }
+20% {
+      transform: translateX(-100%);
+      animation-timing-function: step-end;
+    }
+96% {
+      transform: translateX(100%);
+      animation-timing-function: ease;
+    }
+   }
+p {
+    color: whitesmoke;
+    text-align: center;
+}
+#pr {
+    background-color: #B1ADA7;
+    opacity: 0.9;
+    position: absolute;
+    top: 1300px;
+    height: 140px;
+
+}
+.layout {
+    background-color: black;
+}
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black ;
+    opacity: 0.6;
+    color: white;
+    text-align: center;
+  }
+.contact {
+    position: absolute;
+    top: 1600px;
+    text-align: center;
+    background-color: #BEB7A4;
+    width: 1430px;
+    height: 80px;
+}
+
+
+
+
+

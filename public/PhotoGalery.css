@@ -1,0 +1,44 @@
+@media screen and (min-width:600px){
+    
+    .bar {
+        height: 75px;
+        background-color:#B1ADA7;
+        max-width: 100%;
+        border: 2px solid black;
+    }
+}
+.bar {
+    opacity: 0.7;
+}
+html {
+    background-image: url("./Assets/Elma\ Paris.png");
+    scroll-behavior: smooth;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.col1 {
+    width: 33%;
+}
+.col2 {
+    width: 33%;
+}
+.col3 {
+    width: 33%;
+}
+.main{
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+}
+h1 {
+    color: whitesmoke;
+}
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black ;
+    opacity: 0.6;
+    color: white;
+    text-align: center;
+  }

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Elma'nın Zar Oyunu</title>
+    <link rel="stylesheet" href="./styledice.css">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster" rel="stylesheet">
+</head>
+<body>
+    <div class="headerout">
+        <div class="header">
+            <div><form action="./index.html">
+                <input class="btn1" type="submit" value="Home" />
+            </form></div>
+            <div><form action="./Dice Game.html">
+                <input class="btn1" type="submit" value="Games" />
+            </form></div>
+            <div><form action="./Example.html">
+                <input class="btn1" type="submit" value="Example Site" />
+            </form></div>
+            <div><form action="./PhotoGalery.html">
+                <input class="btn1" type="submit" value="Photo Gallery" />
+            </form></div>
+        </div>
+    </div>
+    <div class="main"></div>
+        <h1>Elma'nın Zar Oyunu</h1>
+        <h3>Lütfen Bir Zar Seç ve Zar At </h3>
+        <div class="dice">
+            <p>Zar 1 :</p>
+            <img class="img1" src="./images/dice6.png">
+            <p>Zar 2 :</p>
+            <img class="img2" src="./images/dice6.png">
+        </div>
+        <div class="checkboxes">
+            <input type="checkbox" id="player1" name="check" class="check_value" value="p1" onclick="onlyOne(this)">
+            <label for="player1"> Zar 1</label> 
+            <input type="checkbox" id="player2" name="check" class="check_value" value="p2" onclick="onlyOne(this)">
+            <label for="player2"> Zar 2</label> 
+        </div>
+        <div class="buttons">
+            <button type="button" class="btn"> Zar At !</button>
+        </div>
+        <div class="empty">
+
+        </div>
+    </div>
+    <script src="/Dice.js" charset="UTF-8">
+        
+    </script>
+
+</body>
+<footer>
+    Copyright @ Elma Bilgisayar ve Finansal İşlemler A.Ş
+</footer>
+</html>
