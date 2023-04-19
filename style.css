@@ -20,15 +20,6 @@ html {
     column-gap: 100px;
     padding: 15px 16px 15px 16px;
 }
-a {
-    font-size: 1.5rem;
-    color: whitesmoke;
-    margin: auto;
-    
-}
-#HomePage {
-    margin-left: 60px;
-}
 .contact img {
     height: 60px;
     margin-top: 10px;
@@ -239,6 +230,33 @@ footer {
   display: flex;
   width: 100%;
   margin-left: 40%;
+}
+
+@media only screen and (max-width: 900px){
+  .projects {
+    display: flex;
+    flex-direction: column;
+  }
+  .header {
+    height: 60px;
+    background: #284b63;
+    padding: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    overflow: hidden;
+    display: flex;
+    column-gap: 0px;
+    padding: 15px 16px 15px 16px;
+  }
+  .btn {
+    padding-left: 10px;
+    font-size: 0.8rem;
+  }
+  .contact{
+    margin-left: 25%;
+  }
+  
 }
 
 
