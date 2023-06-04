@@ -27,10 +27,16 @@ h1{
 .p{
     margin-top: 40px;
     display: inline-block;
-    padding: 15px 16px 15px 16px;
+    padding: 15px 16px 1px 16px;
+    color: #ffffff;
+    font-size: 25px;
+    text-shadow: -2px 8px 9px rgba(27, 16, 6, 1);
+    padding-top: 200px;
+    
 }
 .ps{
     display: flex;
+    
 }
 .ex{
     margin-left: 10%;
@@ -41,8 +47,9 @@ h1{
     color: #ffc300;
 }
 .parallax {
-    background-image: url("./images/ist.jpg");
-    min-height: 400px; 
+    text-align: center;
+    background-image: url("./images/ist1.jpg");
+    min-height: 600px; 
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -52,6 +59,10 @@ h1{
     margin-right: -10px;
 
   }
+#last{
+    margin-bottom: 150px;
+}
+
 
 html{
     background-color: #ffffff;
