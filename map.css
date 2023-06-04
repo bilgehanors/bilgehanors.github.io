@@ -2,6 +2,7 @@
     width: 600px;
     text-align: center;
     margin-top: 50px;
+    box-shadow: 0 -6px 15px 5px rgba(0,0,0,0.5);
 }
 .imgs{
     text-align: center;
@@ -9,11 +10,15 @@
 h1{
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
-    color: #003566;
+    color: #ffffff;
+    padding-top: 140px;
+    font-size: 65px;
+    text-shadow: -2px 8px 9px rgba(27, 16, 6, 1);
 }
 .mainimg{
     height: 600px;
     margin-top: 50px;
+    box-shadow: 0 -6px 15px 5px rgba(0,0,0,0.5);
     
 }
 .header{
@@ -35,6 +40,19 @@ h1{
     text-decoration: none;
     color: #ffc300;
 }
+.parallax {
+    background-image: url("./images/ist.jpg");
+    min-height: 400px; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: -100px;
+    margin-left: -10px;
+    margin-right: -10px;
+
+  }
+
 
 html{
     background-color: #ffffff;
