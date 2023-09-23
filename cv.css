@@ -1,0 +1,39 @@
+.form{
+    text-align: center;
+}
+.cv{
+    width: 600px;
+}
+h1{
+    text-align: center;
+    margin-top: 50px;
+}
+.headerout {
+    background-color: #284b63;
+    border: 1px solid black;
+    text-align: center;
+}
+.header {
+    height: 60px;
+    background: #284b63;
+    padding: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    overflow: hidden;
+    display: flex;
+    column-gap: 100px;
+    padding: 15px 16px 15px 16px;
+}
+.btn {
+    background-color: #284b63;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.2rem;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
