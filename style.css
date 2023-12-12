@@ -231,7 +231,6 @@ footer {
   width: 100%;
   margin-left: 40%;
 }
-/* Add this to your existing CSS */
 .dropdown {
   display: inline-block;
 }
@@ -259,8 +258,6 @@ footer {
 .dropdown:hover .dropdown-content {
   display: block;
 }
-
-
 @media only screen and (max-width: 900px){
   .projects {
     display: flex;
