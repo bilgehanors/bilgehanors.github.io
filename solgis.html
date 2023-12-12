@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,22 +13,230 @@
     <script src="https://unpkg.com/leaflet-draw"></script>
     <script src="https://unpkg.com/leaflet-editable"></script>
     <script src="https://unpkg.com/leaflet-control-geocoder"></script>
-    <link rel="stylesheet" href="./solgis.css">
+    <style>
+        body {
+            background-color: #0c2340; /* Dark Blue */
+            color: #ffffff; /* White */
+            font-family: 'Arial', sans-serif;
+        }
+
+        #map {
+            height: 500px;
+            width: 800px;
+            text-align: center;
+            margin-left: 40%;
+            margin-top: 10%;
+            border: 2px solid #3498db; /* Blue */
+            border-radius: 10px;
+        }
+
+        #area-display {
+            position: absolute;
+            top: 40%;
+            left: 10px;
+            background-color: #2980b9; /* Dark Blue */
+            color: #ffffff; /* White */
+            padding: 10px;
+            border: 2px solid #3498db; /* Blue */
+            border-radius: 10px;
+        }
+
+        #search-bar {
+            position: absolute;
+            top: 100px;
+            right: 10px;
+            z-index: 1000;
+            color: #ffffff; /* White */
+        }
+
+        input[type="text"] {
+            background-color: #3498db; /* Blue */
+            color: #ffffff; /* White */
+            border: 2px solid #2980b9; /* Dark Blue */
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        button {
+            background-color: #3498db; /* Blue */
+            color: #ffffff; /* White */
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9; /* Dark Blue */
+        }
+        .header {
+            background-color: #2980b9; /* Dark Blue */
+            color: #ffffff; /* White */
+            padding: 10px;
+            text-align: center;
+        }
+
+        .header a {
+            color: #ffffff; /* White */
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        .header-dropdown {
+            display: inline-block;
+            position: relative;
+        }
+
+        .header-dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #2980b9; /* Dark Blue */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .header-dropdown:hover .header-dropdown-content {
+            display: block;
+        }
+
+        .header-dropdown-content a {
+            color: #ffffff; /* White */
+            padding: 12px 16px;
+            display: block;
+            text-decoration: none;
+        }
+
+        .header-dropdown-content a:hover {
+            background-color: #2980b9; /* Dark Blue */
+            text-decoration: underline;
+        }
+
+        .coordinates {
+            margin-top: 50px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 35px;
+            color: whitesmoke;
+        }
+        .headerout {
+            background-color: #284b63;
+            border: 1px solid black;
+            text-align: center;
+        }
+        .header {
+            height: 60px;
+            background: #284b63;
+            padding: 0px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+            overflow: hidden;
+            display: flex;
+            column-gap: 100px;
+            padding: 15px 16px 15px 16px;
+        }
+        .btn {
+  background-color: #284b63;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.2rem;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 7%;
+  background-color: #284b63;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #45677d;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+    </style>
 </head>
+
 <body>
+    <div class="headerout">
+        <div class="header">
+            <div><form action="./index.html">
+                <input class="btn" type="submit" value="Home" />
+            </form></div>
+            <div><form action="./Dice Game.html">
+                <input class="btn" type="submit" value="Games" />
+            </form></div>
+            <div><form action="./Example.html">
+                <input class="btn" type="submit" value="Example Site" />
+            </form></div>
+            <div class="dropdown">
+                <button class="btn">Projects</button>
+                <div class="dropdown-content">
+                    <a href="./downloader.html">Youtube Video Downloader</a>
+                    <a href="./solgis.html">SOLGIS</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h1> Map Area Calculator</h1>
+
+    <div class="coordinates">
+        Latitude: <input type="text" id="latitude">
+        Longitude: <input type="text" id="longitude">
+        <button onclick="moveToCoordinates()">Go to Coordinates</button>
+    </div>
     <div id="search-bar"></div>
+
     <div id="map"></div>
 
     <div id="area-display">Area: <span id="area-value">0</span> square meters</div>
 
-    <script src="./solgis.js">
+    <script>
+        function moveToCoordinates() {
+            var latitude = parseFloat(document.getElementById('latitude').value);
+            var longitude = parseFloat(document.getElementById('longitude').value);
+
+            if (!isNaN(latitude) && !isNaN(longitude)) {
+                map.setView([latitude, longitude], 15);
+            } else {
+                alert("Please enter valid coordinates");
+            }
+        }
         var map = L.map('map', {
             center: [39.9854, 32.7192],
             zoom: 30
         });
 
+        // Remove the attribution control
         L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-            attribution: '© Esri'
+            attribution: '',
+            attributionControl: false
         }).addTo(map);
 
         map.editable = new L.Editable(map);
@@ -46,21 +255,22 @@
                     allowIntersection: false,
                     showArea: true,
                     shapeOptions: {
-                        color: 'red'
+                        color: '#3498db' // Blue
                     },
                     drawError: {
-                        color: 'red',
+                        color: '#e74c3c', // Red
                         timeout: 1000
                     }
                 },
-                marker: false, 
-                circle: false, 
-                polyline: false, 
-                rectangle: false 
+                marker: false,
+                circle: false,
+                polyline: false,
+                rectangle: false
             }
         });
         map.addControl(drawControl);
 
+        // Add address search bar outside the map
         var searchControl = L.Control.geocoder().addTo(map);
         document.getElementById('search-bar').appendChild(searchControl.getContainer());
 
@@ -78,9 +288,17 @@
                 document.getElementById('area-value').textContent = area.toFixed(2);
             }
         }
-            
     </script>
 
+    <style>
+        .leaflet-editing-icon {
+            background-color: #3498db; /* Blue */
+            border-radius: 50%;
+            width: 1px;
+            height: 1px;
+        }
+    </style>
 
 </body>
+
 </html>
