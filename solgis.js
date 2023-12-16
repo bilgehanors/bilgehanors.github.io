@@ -9,7 +9,7 @@ function moveToCoordinates() {
     }
 }
 var map = L.map('map', {
-    center: [39.9854, 32.7192],
+    center: [39.86692922462803, 32.81405457144981],
     zoom: 30
 });
 
@@ -86,7 +86,7 @@ function calculatePanels() {
         });
         
 
-        resultDiv.innerHTML = "<p><strong>Number of panels :</strong></p>";
+        resultDiv.innerHTML = "<p><strong>Number of panels can fit :</strong></p>";
         panelCounts.forEach(function (panel) {
             resultDiv.innerHTML += "<p>" + panel.watts + " W: " + panel.count + " panels</p>" + panel.total + " Kw Energ per day";
         });
