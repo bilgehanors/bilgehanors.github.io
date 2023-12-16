@@ -1,31 +1,65 @@
+.leaflet-editing-icon {
+  background-color: #3498db; /* Blue */
+  border-radius: 50%;
+  width: 1px;
+  height: 1px;
+}
+body {
+  background-color: #0c2340; /* Dark Blue */
+  color: #ffffff; /* White */
+  font-family: 'Arial', sans-serif;
+}
+
 #map {
-    height: 500px;
-    width: 500px;
-    text-align: center;
-    margin-left: 30%;
-    margin-top: 5%;
+  height: 500px;
+  width: 800px;
+  text-align: center;
+  margin-left: 40%;
+  margin-top: 10%;
+  border: 2px solid #3498db; /* Blue */
+  border-radius: 10px;
+  margin-bottom: 100px;
+
 }
 
 #area-display {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: white;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  position: absolute;
+  top: 40%;
+  left: 10px;
+  background-color: #2980b9; /* Dark Blue */
+  color: #ffffff; /* White */
+  padding: 10px;
+  border: 2px solid #3498db; /* Blue */
+  border-radius: 10px;
 }
-.leaflet-editing-icon {
-    background-color: red;
-    border-radius: 50%;
-    width: 1px;
-    height: 1px;
-}
+
 #search-bar {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 1000;
+  position: absolute;
+  top: 300px;
+  right: 600px;
+  z-index: 1000;
+  color: #ffffff; /* White */
+}
+
+input[type="text"] {
+  background-color: #3498db; /* Blue */
+  color: #ffffff; /* White */
+  border: 2px solid #2980b9; /* Dark Blue */
+  border-radius: 5px;
+  padding: 5px;
+}
+
+button {
+  background-color: #3498db; /* Blue */
+  color: #ffffff; /* White */
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2980b9; /* Dark Blue */
 }
 .dropdown {
     display: inline-block;
@@ -54,3 +88,106 @@
   .dropdown:hover .dropdown-content {
     display: block;
   }
+  .coordinates {
+    margin-top: 50px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 35px;
+    color: whitesmoke;
+}
+#calculation-results{
+    text-align: center;
+}
+.headerout {
+  background-color: #284b63;
+  border: 1px solid black;
+  text-align: center;
+}
+.header {
+  height: 60px;
+  background: #284b63;
+  padding: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  overflow: hidden;
+  display: flex;
+  column-gap: 100px;
+  padding: 15px 16px 15px 16px;
+}
+.btn {
+  background-color: #284b63;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.2rem;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+@media only screen and (max-width: 750px){
+    #map {
+        height: 300px;
+        width: 350px;
+        text-align: center;
+        margin-left: 0;
+        margin-top: 50%;
+        border: 2px solid #3498db; 
+        border-radius: 10px;
+        margin-bottom: 200px;
+    
+    }
+    #area-display {
+        position: absolute;
+        top: 46%;
+        left: 70px;
+        background-color: #2980b9; /* Dark Blue */
+        color: #ffffff; /* White */
+        padding: 10px;
+        border: 2px solid #3498db; /* Blue */
+        border-radius: 10px;
+        text-align: center;
+    }
+    #search-bar {
+        position: absolute;
+        top: 450px;
+        left: 0px;
+        color: #ffffff; /* White */
+    }
+    h1 {
+        text-align: center;
+        font-size: 35px;
+        color: whitesmoke;
+        margin-left: 0px;
+    }
+    input[type="text"] {
+        background-color: #3498db; /* Blue */
+        color: #ffffff; /* White */
+        border: 2px solid #2980b9; /* Dark Blue */
+        border-radius: 5px;
+        padding: 5px;
+        margin-left: 100px;
+        
+    }
+
+    .header {
+      height: 60px;
+      background: #284b63;
+      padding: 0px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+      overflow: hidden;
+      display: flex;
+      column-gap: 0px;
+      padding: 15px 16px 15px 16px;
+    }
+    .btn {
+      padding-left: 10px;
+      font-size: 0.8rem;
+    }
+}

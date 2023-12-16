@@ -1,10 +1,21 @@
+function moveToCoordinates() {
+    var latitude = parseFloat(document.getElementById('latitude').value);
+    var longitude = parseFloat(document.getElementById('longitude').value);
+
+    if (!isNaN(latitude) && !isNaN(longitude)) {
+        map.setView([latitude, longitude], 15);
+    } else {
+        alert("Please enter valid coordinates");
+    }
+}
 var map = L.map('map', {
     center: [39.9854, 32.7192],
     zoom: 30
 });
 
 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    attribution: '© Esri'
+    attribution: '',
+    attributionControl: false
 }).addTo(map);
 
 map.editable = new L.Editable(map);
@@ -23,20 +34,21 @@ var drawControl = new L.Control.Draw({
             allowIntersection: false,
             showArea: true,
             shapeOptions: {
-                color: 'red'
+                color: '#3498db' 
             },
             drawError: {
-                color: 'red',
+                color: '#e74c3c', 
                 timeout: 1000
             }
         },
-        marker: false, 
-        circle: false, 
-        polyline: false, 
-        rectangle: false 
+        marker: false,
+        circle: false,
+        polyline: false,
+        rectangle: false
     }
 });
 map.addControl(drawControl);
+
 
 var searchControl = L.Control.geocoder().addTo(map);
 document.getElementById('search-bar').appendChild(searchControl.getContainer());
@@ -53,5 +65,32 @@ function updateAreaDisplay(layer) {
     if (layer instanceof L.Polygon) {
         var area = L.GeometryUtil.geodesicArea(layer.getLatLngs()[0]);
         document.getElementById('area-value').textContent = area.toFixed(2);
+    }
+}
+function calculatePanels() {
+    var area = parseFloat(document.getElementById('area-value').textContent);
+    var resultDiv = document.getElementById('calculation-results');
+    
+    if (!isNaN(area)) {
+        var panelDimensions = [
+            { watts: 400, width: 200, height: 100 },
+            { watts: 500, width: 225, height: 110 },
+            { watts: 600, width: 245, height: 115 }
+        ];
+
+        var panelCounts = panelDimensions.map(function (panel) {
+            var panelArea = (panel.width / 100) * (panel.height / 100); 
+            var numberOfPanels = Math.floor((area / 2) / panelArea);
+            var Energy = Math.floor(numberOfPanels * panel.watts / 1000 * 7 );
+            return { watts: panel.watts, count: numberOfPanels, total: Energy};
+        });
+        
+
+        resultDiv.innerHTML = "<p><strong>Number of panels :</strong></p>";
+        panelCounts.forEach(function (panel) {
+            resultDiv.innerHTML += "<p>" + panel.watts + " W: " + panel.count + " panels</p>" + panel.total + " Kw Energ per day";
+        });
+    } else {
+        resultDiv.innerHTML = "<p>Please draw an area on the map first.</p>";
     }
 }
