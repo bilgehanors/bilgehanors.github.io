@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earth Viewer</title>
+    <link rel="stylesheet" href="./earth.css">
+</head>
+<body>
+    <h1 class="h1">Earth Viewer</h1>
+    <div class="container">
+        <div class="earth">
+            <img id="earth-image" src="./images/144p.png">
+        </div>
+        <label class='h2' for="quality">Choose a quality:</label>
+    <select name="qualitysel" id="qualitysel">
+        <option value="144p">144p</option>
+        <option value="240p">240p</option>
+        <option value="360p">360p</option>
+        <option value="480p">480p</option>
+        <option value="720p">720p</option>
+        <option value="1080p">1080p</option>
+        <option value="4K">4K</option>
+    </select>
+    </div>
+
+    <script>
+        document.getElementById('qualitysel').addEventListener('change', function() {
+            var quality = this.value;
+            var img = document.getElementById('earth-image');
+            img.src = './images/' + quality + '.png';
+        });
+    </script>
+</body>
+</html>
