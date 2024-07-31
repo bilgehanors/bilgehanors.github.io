@@ -92,7 +92,8 @@ function drawLine() {
 
     document.getElementById('locations').innerHTML = `
          ${selectedPoint1.name}<br>
-        To ${selectedPoint2.name}
+        To <br>
+        ${selectedPoint2.name}
     `;
 }
 
