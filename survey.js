@@ -91,7 +91,7 @@ function drawLine() {
     map.fitBounds(line.getBounds());
 
     document.getElementById('locations').innerHTML = `
-         ${selectedPoint1.name}<br>
+        ${selectedPoint1.name}<br>
         To <br>
         ${selectedPoint2.name}
     `;
