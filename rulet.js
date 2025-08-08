@@ -39,30 +39,24 @@ function showStreak() {
 
 // Yuvaları dairesel yerleştir ve tıklama ile mermi koyma
 function positionChambers() {
-  const rect = revolver.getBoundingClientRect();
-  const centerX = rect.width / 2;
-  const centerY = rect.height / 2;
-  const radius = Math.min(centerX, centerY) - 30; // Kenarlardan boşluk için 30px çıkar
-
+  const centerX = 150, centerY = 150, radius = 100;
   chambers.forEach((chamber, index) => {
     const angle = (index / 6) * 2 * Math.PI;
-    const x = centerX + radius * Math.cos(angle) - chamber.offsetWidth / 2;
-    const y = centerY + radius * Math.sin(angle) - chamber.offsetHeight / 2;
+    const x = centerX + radius * Math.cos(angle) - 25;
+    const y = centerY + radius * Math.sin(angle) - 25;
     chamber.style.left = `${x}px`;
     chamber.style.top = `${y}px`;
 
     chamber.addEventListener('click', () => {
       if (spinning) return;
-      if (bulletHidden) return;
+      if (bulletHidden) return;  // Dönüş sonrası mermi gizliyse değişiklik yok
       chambers.forEach(c => c.classList.remove('bullet'));
       bulletPosition = index;
       chamber.classList.add('bullet');
-      document.getElementById('result').innerText = `💡 Mermi ${index + 1}. yuvaya yerleştirildi.`;
+      document.getElementById('result').innerText = `Mermi ${index + 1}. yuvaya yerleştirildi.`;
     });
   });
 }
-
-
 
 // Tamburu dönme animasyonuyla döndür
 function spinChamber() {
@@ -161,9 +155,11 @@ function fire() {
   }
 }
 
-window.addEventListener('resize', () => {
-  positionChambers();
-});
+// İlk konumlandırmayı yap
+positionChambers();
+
+
+
 
 
 
