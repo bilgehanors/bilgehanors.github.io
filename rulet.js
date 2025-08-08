@@ -53,7 +53,7 @@ function positionChambers() {
       chambers.forEach(c => c.classList.remove('bullet'));
       bulletPosition = index;
       chamber.classList.add('bullet');
-      document.getElementById('result').innerText = `💡 Mermi ${index + 1}. yuvaya yerleştirildi.`;
+      document.getElementById('result').innerText = ` Mermi ${index + 1}. yuvaya yerleştirildi.`;
     });
   });
 }
@@ -134,7 +134,7 @@ function fire() {
   if (currentPosition === bulletPosition) {
     chambers[currentPosition].classList.add('bullet');
     chambers[currentPosition].style.background = 'red';
-    document.getElementById('result').innerText = '💥 BANG! Vuruldun!\n💔 Streak sıfırlandı.';
+    document.getElementById('result').innerText = 'BAMM! Vuruldun!\n💔 Streak sıfırlandı.';
     setStreak(0);
   } else {
     chambers[currentPosition].style.background = 'green';
@@ -145,7 +145,7 @@ function fire() {
     let current = getStreak();
     setStreak(current + 1);
 
-    document.getElementById('result').innerText = `😅 Tık! Hayattasın.\n💡 Mermi ${bulletPosition + 1}. yuvadaydı.`;
+    document.getElementById('result').innerText = `Tık! Hayattasın.\n💡 Mermi ${bulletPosition + 1}. yuvadaydı.`;
     showStreak();
 
     setTimeout(() => {
