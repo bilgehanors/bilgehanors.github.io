@@ -163,8 +163,6 @@ function fire() {
   }
 }
 
-// İlk konumlandırmayı yap
-positionChambers();
 
 
 
