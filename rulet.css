@@ -1,69 +1,89 @@
+/* Ana konteyneri esnek yap */
 body {
+  margin: 0;
+  padding: 0;
   font-family: Arial, sans-serif;
-  text-align: center;
-  background: #1a1a1a;
-  color: #fff;
-}
-
-h1 {
-  margin-top: 20px;
+  background: #222;
+  color: #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding-top: 20px;
 }
 
 .revolver {
   position: relative;
-  width: 300px;
-  height: 300px;
-  margin: 40px auto;
+  width: 80vw;       /* Genişlik mobilde ekranın %80'i */
+  max-width: 320px;  /* Büyük ekranlarda 320px'i geçmesin */
+  height: 80vw;      /* Kare yap */
+  max-height: 320px;
   border-radius: 50%;
   background: #444;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-bottom: 20px;
   transition: transform 0.1s linear;
 }
 
-
+/* Tabanca yuvaları (chambers) */
 .chamber {
-  width: 50px;
-  height: 50px;
-  background: #222;
-  border: 3px solid #aaa;
-  border-radius: 50%;
   position: absolute;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.chamber::after {
-  content: '';
-  display: block;
-  width: 14px;
-  height: 14px;
+  width: 15vw;       /* Mobilde boyut küçülsün */
+  max-width: 50px;
+  height: 15vw;
+  max-height: 50px;
+  background: #666;
+  border: 2px solid #aaa;
   border-radius: 50%;
-  background: transparent;
-  margin: 18px auto;
-}
-
-.chamber.bullet::after {
-  background: red;
-}
-
-.chamber.active {
-  background: gold;
-}
-
-.buttons {
-  margin: 20px;
-}
-
-button {
-  padding: 10px 20px;
-  font-size: 18px;
-  margin: 5px;
   cursor: pointer;
+  transition: background 0.3s, border-color 0.3s;
 }
 
-#result {
-  margin-top: 20px;
-  font-size: 24px;
+/* Mermi yuvası */
+.bullet {
+  background: red !important;
+  border-color: darkred !important;
 }
+
+/* Aktif yuva vurgusu */
+.active {
+  box-shadow: 0 0 10px 3px gold;
+}
+
+/* Butonlar */
+button {
+  background-color: #555;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  color: white;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #777;
+}
+
+/* Result alanı */
+#result {
+  white-space: pre-line; /* \n ile satır atlama için */
+  font-size: 1rem;
+  max-width: 320px;
+  text-align: center;
+}
+
+/* Responsive font ve buton boyutu */
+@media (max-width: 400px) {
+  button {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+
+  #result {
+    font-size: 0.9rem;
+  }
+}
+
