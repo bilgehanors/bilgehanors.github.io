@@ -1,13 +1,15 @@
 const chambers = document.querySelectorAll('.chamber');
-let bulletPosition = null;
-let currentPosition = 0;
+const revolver = document.getElementById('revolver');
+let bulletPosition = null;  // Mermi başlangıç pozisyonu (0-5)
+let currentPosition = 0;    // Tamburun aktif yeri (0-5)
 let spinning = false;
 let bulletHidden = false;
 
-// Zaman ve streak kontrolü
+// LocalStorage için keyler
 const LAST_PLAY_KEY = "rus-ruleti-last-play";
 const STREAK_KEY = "rus-ruleti-streak";
 
+// Streak ve son oynama zamanı al-sat fonksiyonları
 function getStreak() {
   return parseInt(localStorage.getItem(STREAK_KEY)) || 0;
 }
@@ -35,7 +37,7 @@ function showStreak() {
   document.getElementById('result').innerText += `\n🔥 Streak: ${streak}`;
 }
 
-// Daire içine diz
+// Yuvaları dairesel yerleştir ve tıklama ile mermi koyma
 function positionChambers() {
   const centerX = 150, centerY = 150, radius = 100;
   chambers.forEach((chamber, index) => {
@@ -47,7 +49,7 @@ function positionChambers() {
 
     chamber.addEventListener('click', () => {
       if (spinning) return;
-      if (bulletHidden) return;  // Mermi gizliyse değiştirme!
+      if (bulletHidden) return;  // Dönüş sonrası mermi gizliyse değişiklik yok
       chambers.forEach(c => c.classList.remove('bullet'));
       bulletPosition = index;
       chamber.classList.add('bullet');
@@ -56,7 +58,7 @@ function positionChambers() {
   });
 }
 
-// Tamburu döndür (animasyonlu)
+// Tamburu dönme animasyonuyla döndür
 function spinChamber() {
   if (!canPlayToday()) {
     const hoursLeft = Math.ceil((24 * 60 * 60 * 1000 - (Date.now() - getLastPlay())) / (60 * 60 * 1000));
@@ -68,31 +70,40 @@ function spinChamber() {
     alert("Önce mermiyi bir yuvaya yerleştir.");
     return;
   }
-
   if (spinning) return;
+
   spinning = true;
   bulletHidden = true;
 
-  // Mermiyi gizle
+  // Mermiyi gizle (çünkü tambur dönüyor)
   chambers.forEach(c => c.classList.remove('bullet'));
+  document.getElementById('result').innerText = "🎯 Tambur dönüyor...";
 
   let spins = Math.floor(Math.random() * 12) + 10;
-  let i = 0;
+  let currentSpin = 0;
+  const rotationStep = 360 / 6;
+  let currentAngle = 0;
+  let activeIndex = 0;
 
-  let interval = setInterval(() => {
+  const interval = setInterval(() => {
+    currentAngle = (currentAngle + rotationStep) % 360;
+    revolver.style.transform = `rotate(${currentAngle}deg)`;
+
+    activeIndex = (activeIndex + 1) % 6;
     chambers.forEach(c => c.classList.remove('active'));
-    chambers[i % 6].classList.add('active');
-    currentPosition = i % 6;
-    i++;
-    if (i >= spins) {
+    chambers[activeIndex].classList.add('active');
+
+    currentSpin++;
+    if (currentSpin >= spins) {
       clearInterval(interval);
       spinning = false;
+      currentPosition = activeIndex;
       document.getElementById('result').innerText = `🎯 Tambur döndü, pozisyon ${currentPosition + 1}`;
     }
   }, 100);
 }
 
-// Sık
+// Ateş etme fonksiyonu
 function fire() {
   if (spinning) return;
 
@@ -106,8 +117,11 @@ function fire() {
     return;
   }
 
-  // Artık oynandı
+  // Oynama kaydını güncelle
   setLastPlay(Date.now());
+
+  // Tamburu sıfırla (dönüş kaldır)
+  revolver.style.transform = `rotate(0deg)`;
 
   chambers.forEach(c => {
     c.classList.remove('active', 'bullet');
@@ -125,11 +139,9 @@ function fire() {
   } else {
     chambers[currentPosition].style.background = 'green';
 
-    // Mermi nerede göster
     chambers[bulletPosition].classList.add('bullet');
     chambers[bulletPosition].style.borderColor = 'red';
 
-    // Streak artır
     let current = getStreak();
     setStreak(current + 1);
 
@@ -143,7 +155,10 @@ function fire() {
   }
 }
 
+// İlk konumlandırmayı yap
 positionChambers();
+
+
 
 
 
