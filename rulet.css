@@ -19,7 +19,9 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: transform 0.1s linear;
 }
+
 
 .chamber {
   width: 50px;
