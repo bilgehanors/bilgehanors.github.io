@@ -61,9 +61,7 @@ function positionChambers() {
     });
   });
 }
-window.addEventListener('resize', () => {
-  positionChambers();
-});
+
 
 
 // Tamburu dönme animasyonuyla döndür
@@ -162,6 +160,10 @@ function fire() {
     }, 1500);
   }
 }
+
+window.addEventListener('resize', () => {
+  positionChambers();
+});
 
 
 
